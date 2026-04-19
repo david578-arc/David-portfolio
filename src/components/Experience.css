@@ -1,0 +1,115 @@
+.exp__timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.exp__item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 24px;
+}
+
+.exp__line-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 6px;
+}
+
+.exp__dot {
+  width: 14px;
+  height: 14px;
+  background: var(--e-color);
+  border-radius: 50%;
+  box-shadow: 0 0 16px var(--e-color);
+  flex-shrink: 0;
+}
+
+.exp__connector {
+  flex: 1;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--e-color), transparent);
+  margin: 8px 0;
+  min-height: 40px;
+}
+
+.exp__card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 28px;
+  margin-bottom: 24px;
+  transition: border-color 0.3s;
+}
+
+.exp__card:hover {
+  border-color: var(--e-color);
+}
+
+.exp__card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
+.exp__role {
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.exp__company {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--e-color);
+  letter-spacing: 0.05em;
+}
+
+.exp__period {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--border);
+  padding: 4px 10px;
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.exp__desc {
+  font-size: 0.88rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.exp__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.exp__highlight {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.exp__check {
+  color: var(--e-color);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 600px) {
+  .exp__item { grid-template-columns: 28px 1fr; gap: 14px; }
+  .exp__card { padding: 18px; }
+}

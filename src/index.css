@@ -5,15 +5,15 @@
 }
 
 :root {
-  --bg: #0a0a14;
-  --bg2: #0f0f1e;
-  --surface: #13132a;
-  --border: rgba(138, 120, 255, 0.15);
-  --accent: #8a78ff;
-  --accent2: #00f5d4;
-  --accent3: #ff6b9d;
-  --text: #f0f0f8;
-  --muted: #8a8aa8;
+  --bg: #000000;
+  --bg2: #0d0d0d;
+  --surface: #1a1a1a;
+  --border: rgba(255, 215, 0, 0.2);
+  --accent: #ffd700;
+  --accent2: #ff6b35;
+  --accent3: #00d9ff;
+  --text: #ffffff;
+  --muted: #a0a0a0;
   --mono: 'Space Mono', monospace;
   --sans: 'Syne', sans-serif;
 }

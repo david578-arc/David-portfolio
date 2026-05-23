@@ -10,7 +10,7 @@ const projects = [
     tags: ['LLMs', 'Multi-Agent', 'NLP', 'Python'],
     color: '#7c6af7',
     icon: '🛡',
-    github: 'https://github.com/davidsiyame/compliance-guardian',
+    github: 'https://github.com/david578-arc/Compilance-system',
   },
   {
     num: '02',
@@ -20,7 +20,7 @@ const projects = [
     tags: ['Transformers', 'NLP', 'Knowledge Base', 'Python'],
     color: '#3de8c8',
     icon: '💬',
-    github: 'https://github.com/davidsiyame/llm-conversational-ai',
+    github: 'https://github.com/david578-arc/llm-customer-support',
   },
   {
     num: '03',
@@ -30,7 +30,7 @@ const projects = [
     tags: ['Computer Vision', 'Deep Learning', 'TensorFlow', 'OpenCV'],
     color: '#f76a6a',
     icon: '📦',
-    github: 'https://github.com/davidsiyame/shelf-stock-detection',
+    github: 'https://github.com/david578-arc/Real-time-stock-detection',
   },
   {
     num: '04',
@@ -40,7 +40,7 @@ const projects = [
     tags: ['React', 'Spring Boot', 'MySQL', 'REST API'],
     color: '#f7c26a',
     icon: '⚽',
-    github: 'https://github.com/davidsiyame/fifa-player-manager',
+    github: 'https://github.com/david578-arc/David',
   },
 ];
 

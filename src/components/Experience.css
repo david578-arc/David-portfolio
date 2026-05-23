@@ -11,15 +11,16 @@
   left: 20px;
   top: 0;
   bottom: 0;
-  width: 2px;
+  width: 3px;
   background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
-  opacity: 0.3;
+  opacity: 0.2;
+  border-radius: 2px;
 }
 
 .exp__item {
   display: grid;
   grid-template-columns: 40px 1fr;
-  gap: 32px;
+  gap: 36px;
   position: relative;
 }
 
@@ -33,28 +34,47 @@
 }
 
 .exp__dot {
-  width: 18px;
-  height: 18px;
-  background: var(--e-color);
+  width: 22px;
+  height: 22px;
+  background: linear-gradient(135deg, var(--e-color), color-mix(in srgb, var(--e-color) 70%, #000));
   border-radius: 50%;
-  box-shadow: 0 0 24px var(--e-color), 0 0 48px var(--e-color);
+  box-shadow: 
+    0 0 0 4px var(--bg),
+    0 0 0 6px var(--e-color),
+    0 0 30px var(--e-color),
+    0 0 50px var(--e-color);
   flex-shrink: 0;
   position: relative;
-  animation: pulse-dot 2s ease-in-out infinite;
+  animation: pulse-dot 3s ease-in-out infinite;
+  border: 2px solid var(--bg);
 }
 
 .exp__dot::before {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -8px;
   border: 2px solid var(--e-color);
   border-radius: 50%;
-  opacity: 0.3;
+  opacity: 0;
+  animation: ripple 2s ease-out infinite;
+}
+
+.exp__dot::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  background: radial-gradient(circle, rgba(255,255,255,0.8), transparent);
+  border-radius: 50%;
 }
 
 @keyframes pulse-dot {
   0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.15); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 
 .exp__connector {
@@ -66,114 +86,197 @@
 }
 
 .exp__card {
-  background: linear-gradient(135deg, var(--surface) 0%, color-mix(in srgb, var(--surface) 95%, var(--e-color)) 100%);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 32px;
-  margin-bottom: 32px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: var(--bg2);
+  border: 2px solid transparent;
+  border-radius: 28px;
+  padding: 0;
+  margin-bottom: 36px;
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   position: relative;
   overflow: hidden;
+  cursor: pointer;
 }
 
 .exp__card::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--e-color), transparent);
+  inset: -2px;
+  background: linear-gradient(135deg, var(--e-color), transparent 60%);
+  border-radius: 28px;
   opacity: 0;
-  transition: opacity 0.4s;
+  transition: opacity 0.5s;
+  z-index: 0;
+}
+
+.exp__card::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 180deg at 50% 50%, transparent, var(--e-color), transparent 30%);
+  opacity: 0;
+  transition: opacity 0.5s;
+  animation: rotate-reverse 5s linear infinite;
+  animation-play-state: paused;
+}
+
+@keyframes rotate-reverse {
+  100% { transform: rotate(-360deg); }
 }
 
 .exp__card:hover {
   border-color: var(--e-color);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--e-color) 8%, var(--surface)) 0%, color-mix(in srgb, var(--surface) 95%, var(--e-color)) 100%);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--e-color);
-  transform: translateX(8px) translateY(-4px);
+  transform: translateX(12px) translateY(-6px) scale(1.02);
+  box-shadow: 
+    0 20px 60px rgba(0,0,0,0.5),
+    0 0 0 1px var(--e-color),
+    inset 0 1px 0 rgba(255,255,255,0.1);
 }
 
 .exp__card:hover::before {
-  opacity: 1;
+  opacity: 0.15;
+}
+
+.exp__card:hover::after {
+  opacity: 0.5;
+  animation-play-state: running;
 }
 
 .exp__card-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 14px;
+  gap: 20px;
   flex-wrap: wrap;
+  padding: 36px 32px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .exp__role {
   font-family: var(--sans);
-  font-size: 1.25rem;
-  font-weight: 800;
+  font-size: 1.4rem;
+  font-weight: 900;
   color: var(--text);
-  margin-bottom: 6px;
-  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  position: relative;
+  transition: all 0.4s;
+}
+
+.exp__role::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--e-color);
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 10px var(--e-color);
+}
+
+.exp__card:hover .exp__role {
+  color: var(--e-color);
+  text-shadow: 0 0 20px var(--e-color);
+}
+
+.exp__card:hover .exp__role::after {
+  width: 100%;
 }
 
 .exp__company {
   font-family: var(--mono);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--e-color);
-  letter-spacing: 0.05em;
-  font-weight: 600;
+  letter-spacing: 0.08em;
+  font-weight: 700;
   text-transform: uppercase;
+  opacity: 0.9;
 }
 
 .exp__period {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text);
-  background: color-mix(in srgb, var(--e-color) 15%, transparent);
-  border: 1px solid var(--e-color);
-  padding: 6px 14px;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--e-color) 25%, transparent), color-mix(in srgb, var(--e-color) 15%, transparent));
+  border: 2px solid var(--e-color);
+  padding: 8px 18px;
   border-radius: 100px;
   white-space: nowrap;
-  font-weight: 600;
+  font-weight: 700;
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--e-color) 30%, transparent);
+  transition: all 0.4s;
+}
+
+.exp__card:hover .exp__period {
+  transform: scale(1.05);
+  box-shadow: 0 6px 24px var(--e-color);
 }
 
 .exp__desc {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--muted);
-  line-height: 1.8;
-  margin-bottom: 20px;
+  line-height: 1.9;
+  padding: 20px 32px;
+  position: relative;
+  z-index: 1;
 }
 
 .exp__highlights {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 0 32px 36px;
+  position: relative;
+  z-index: 1;
 }
 
 .exp__highlight {
   font-family: var(--mono);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: var(--text);
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.03);
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.06);
-  transition: all 0.3s;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+}
+
+.exp__highlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--e-color), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .exp__card:hover .exp__highlight {
-  background: rgba(255,255,255,0.06);
-  border-color: rgba(255,255,255,0.12);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--e-color) 20%, transparent), color-mix(in srgb, var(--e-color) 10%, transparent));
+  border-color: var(--e-color);
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--e-color) 30%, transparent);
+}
+
+.exp__card:hover .exp__highlight::before {
+  opacity: 0.15;
 }
 
 .exp__check {
   color: var(--e-color);
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: bold;
+  text-shadow: 0 0 10px var(--e-color);
 }
 
 @media (max-width: 600px) {

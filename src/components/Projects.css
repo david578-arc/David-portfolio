@@ -17,6 +17,8 @@
   transition: all 0.3s;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  color: inherit;
 }
 
 .project-item::before {
@@ -34,8 +36,9 @@
 
 .project-item--hovered {
   border-color: var(--p-color);
-  background: color-mix(in srgb, var(--p-color) 5%, var(--surface));
-  transform: translateX(4px);
+  background: color-mix(in srgb, var(--p-color) 8%, var(--surface));
+  transform: translateX(6px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
 }
 
 .project-item--hovered::before {

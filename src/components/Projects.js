@@ -10,6 +10,7 @@ const projects = [
     tags: ['LLMs', 'Multi-Agent', 'NLP', 'Python'],
     color: '#7c6af7',
     icon: '🛡',
+    github: 'https://github.com/davidsiyame/compliance-guardian',
   },
   {
     num: '02',
@@ -19,6 +20,7 @@ const projects = [
     tags: ['Transformers', 'NLP', 'Knowledge Base', 'Python'],
     color: '#3de8c8',
     icon: '💬',
+    github: 'https://github.com/davidsiyame/llm-conversational-ai',
   },
   {
     num: '03',
@@ -28,6 +30,7 @@ const projects = [
     tags: ['Computer Vision', 'Deep Learning', 'TensorFlow', 'OpenCV'],
     color: '#f76a6a',
     icon: '📦',
+    github: 'https://github.com/davidsiyame/shelf-stock-detection',
   },
   {
     num: '04',
@@ -37,6 +40,7 @@ const projects = [
     tags: ['React', 'Spring Boot', 'MySQL', 'REST API'],
     color: '#f7c26a',
     icon: '⚽',
+    github: 'https://github.com/davidsiyame/fifa-player-manager',
   },
 ];
 
@@ -50,7 +54,10 @@ export default function Projects() {
         <h2 className="section-title">Featured <span>Projects</span></h2>
         <div className="projects__list">
           {projects.map((p, i) => (
-            <div
+            <a
+              href={p.github}
+              target="_blank"
+              rel="noopener noreferrer"
               className={`project-item ${hovered === i ? 'project-item--hovered' : ''}`}
               key={p.num}
               style={{ '--p-color': p.color }}
@@ -72,7 +79,7 @@ export default function Projects() {
                 </div>
               </div>
               <div className="project-item__arrow">→</div>
-            </div>
+            </a>
           ))}
         </div>
       </div>

@@ -3,6 +3,14 @@ import './Experience.css';
 
 const exp = [
   {
+    role: 'Software Developer Intern',
+    company: 'Zoho Corporation',
+    period: 'Internship',
+    color: '#ff6b35',
+    desc: 'Developed and optimized software solutions, collaborated on enterprise-level applications, and contributed to full-stack development projects using modern technologies.',
+    highlights: ['Full-stack development', 'Enterprise applications', 'Code optimization', 'Agile collaboration'],
+  },
+  {
     role: 'AI/ML Engineer Intern',
     company: 'Nandha Infotech',
     period: 'Internship',

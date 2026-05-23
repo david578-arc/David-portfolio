@@ -13,7 +13,7 @@ export default function Contact() {
   const links = [
     { label: 'Email', value: 'davidsiyam87@gmail.com', href: 'mailto:davidsiyam87@gmail.com', icon: '✉️' },
     { label: 'Phone', value: '+91 8610695242', href: 'tel:+918610695242', icon: '📞' },
-    { label: 'GitHub', value: 'github.com/davidsiyam', href: 'https://github.com', icon: '🐙' },
+    { label: 'GitHub', value: 'david578-arc', href: 'https://github.com/david578-arc', icon: '🐙' },
     { label: 'Portfolio', value: 'View Portfolio', href: '#', icon: '🌐' },
     { label: 'Location', value: 'Coimbatore, Tamil Nadu', href: null, icon: '📍' },
   ];

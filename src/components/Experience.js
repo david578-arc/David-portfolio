@@ -18,14 +18,6 @@ const exp = [
     desc: 'Worked on end-to-end machine learning workflows including data preprocessing, model training, evaluation, and integration of AI components into production-oriented systems.',
     highlights: ['End-to-end ML workflows', 'Model training & evaluation', 'Production AI integration', 'Data preprocessing pipelines'],
   },
-  {
-    role: 'Machine Learning Engineer Intern',
-    company: 'Internpe',
-    period: 'Internship',
-    color: '#3de8c8',
-    desc: 'Implemented supervised learning models, feature engineering pipelines, and evaluation metrics for real-world datasets using Python and TensorFlow.',
-    highlights: ['Supervised learning models', 'Feature engineering pipelines', 'Python & TensorFlow', 'Real-world dataset analysis'],
-  },
 ];
 
 export default function Experience() {

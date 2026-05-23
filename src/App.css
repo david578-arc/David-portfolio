@@ -31,23 +31,54 @@ section {
 .section-label {
   font-family: var(--mono);
   font-size: 11px;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--accent2);
   margin-bottom: 12px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+  padding-left: 24px;
+}
+
+.section-label::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 2px;
+  background: var(--accent2);
+  box-shadow: 0 0 8px var(--accent2);
 }
 
 .section-title {
   font-family: var(--sans);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 900;
   line-height: 1.1;
-  margin-bottom: 56px;
+  margin-bottom: 64px;
   color: var(--text);
+  letter-spacing: -0.02em;
+  position: relative;
+  display: inline-block;
 }
 
 .section-title span {
   color: var(--accent);
+  position: relative;
+}
+
+.section-title span::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  opacity: 0.4;
 }
 
 @media (max-width: 768px) {

@@ -2,12 +2,25 @@
   display: flex;
   flex-direction: column;
   gap: 0;
+  position: relative;
+}
+
+.exp__timeline::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+  opacity: 0.3;
 }
 
 .exp__item {
   display: grid;
   grid-template-columns: 40px 1fr;
-  gap: 24px;
+  gap: 32px;
+  position: relative;
 }
 
 .exp__line-col {
@@ -15,39 +28,75 @@
   flex-direction: column;
   align-items: center;
   padding-top: 6px;
+  position: relative;
+  z-index: 2;
 }
 
 .exp__dot {
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   background: var(--e-color);
   border-radius: 50%;
-  box-shadow: 0 0 16px var(--e-color);
+  box-shadow: 0 0 24px var(--e-color), 0 0 48px var(--e-color);
   flex-shrink: 0;
+  position: relative;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+
+.exp__dot::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--e-color);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
 }
 
 .exp__connector {
   flex: 1;
   width: 2px;
-  background: linear-gradient(to bottom, var(--e-color), transparent);
+  background: transparent;
   margin: 8px 0;
   min-height: 40px;
 }
 
 .exp__card {
-  background: var(--surface);
+  background: linear-gradient(135deg, var(--surface) 0%, color-mix(in srgb, var(--surface) 95%, var(--e-color)) 100%);
   border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 28px;
-  margin-bottom: 24px;
-  transition: all 0.3s;
+  border-radius: 20px;
+  padding: 32px;
+  margin-bottom: 32px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.exp__card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--e-color), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
 }
 
 .exp__card:hover {
   border-color: var(--e-color);
-  background: color-mix(in srgb, var(--e-color) 5%, var(--surface));
-  box-shadow: 0 6px 20px rgba(0,0,0,0.25);
-  transform: translateY(-2px);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--e-color) 8%, var(--surface)) 0%, color-mix(in srgb, var(--surface) 95%, var(--e-color)) 100%);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 0 1px var(--e-color);
+  transform: translateX(8px) translateY(-4px);
+}
+
+.exp__card:hover::before {
+  opacity: 1;
 }
 
 .exp__card-top {
@@ -61,55 +110,70 @@
 
 .exp__role {
   font-family: var(--sans);
-  font-size: 1.1rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 800;
   color: var(--text);
-  margin-bottom: 4px;
+  margin-bottom: 6px;
+  letter-spacing: -0.02em;
 }
 
 .exp__company {
   font-family: var(--mono);
-  font-size: 0.8rem;
+  font-size: 0.85rem;
   color: var(--e-color);
   letter-spacing: 0.05em;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .exp__period {
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: var(--muted);
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
+  color: var(--text);
+  background: color-mix(in srgb, var(--e-color) 15%, transparent);
+  border: 1px solid var(--e-color);
+  padding: 6px 14px;
   border-radius: 100px;
   white-space: nowrap;
+  font-weight: 600;
 }
 
 .exp__desc {
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   color: var(--muted);
-  line-height: 1.7;
-  margin-bottom: 16px;
+  line-height: 1.8;
+  margin-bottom: 20px;
 }
 
 .exp__highlights {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
 }
 
 .exp__highlight {
   font-family: var(--mono);
   font-size: 0.72rem;
-  color: var(--muted);
+  color: var(--text);
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  background: rgba(255,255,255,0.03);
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  transition: all 0.3s;
+}
+
+.exp__card:hover .exp__highlight {
+  background: rgba(255,255,255,0.06);
+  border-color: rgba(255,255,255,0.12);
 }
 
 .exp__check {
   color: var(--e-color);
-  font-size: 0.8rem;
+  font-size: 0.9rem;
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
